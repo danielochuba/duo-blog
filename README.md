@@ -19,7 +19,7 @@
 - [📝 License](#license)
 
 
-# 📖   Catalog Of Things<a name="about-project"></a>
+# 📖   DUO-BLOG <a name="about-project"></a>
 
 **DUO-Blog** app is a classic example of a blog website that will create as a fully functional website that will show the list of posts and empower readers to interact with them by adding comments and liking posts.
 
@@ -62,7 +62,7 @@
 
 ### Key Features <a name="key-features"></a>
 
-- Added Item class in item.rb
+- Users can create an account and log in.
 
 
 
@@ -106,6 +106,23 @@ To run the project:
 
 ```sh
   cd duo-blog
+```
+```sh
+  bundle install
+```
+```sh
+  rails db:drop
+```
+
+```sh
+  rails db:create
+```
+```sh
+  rails db:migrate
+```
+```sh
+  rails server
+```
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
