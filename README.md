@@ -62,8 +62,10 @@
 
 ### Key Features <a name="key-features"></a>
 
-- Users can create an account and log in.
-
+- Users can create a profile.
+- Users can create posts.
+- Users can comment on posts.
+- Users can like posts.
 
 
 ## 💻 Getting Started <a name="getting-started"></a>
@@ -139,6 +141,8 @@ To run the project:
 
 ## Future features <a name="future-features"></a>
 - Add  Interactive UI
+- Add  User Authentication
+- Add  User Authorization
 <!-- CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
