@@ -17,6 +17,7 @@ class Post < ApplicationRecord
   after_save :update_likes_counter
 
   private
+
   def update_user_posts_counter
     author.update(post_count: author.authored_posts.count)
   end
@@ -24,5 +25,4 @@ class Post < ApplicationRecord
   def update_likes_counter
     update(likes_counter: likes.count)
   end
-
 end
