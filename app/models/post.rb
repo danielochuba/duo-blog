@@ -11,15 +11,10 @@ class Post < ApplicationRecord
   # Method to update the likes counter for a post
 
   after_save :update_user_posts_counter
-  after_save :update_likes_counter
 
   private
 
   def update_user_posts_counter
     author.update(post_count: author.authored_posts.count)
-  end
-
-  def update_likes_counter
-    update(likes_counter: likes.count)
   end
 end
