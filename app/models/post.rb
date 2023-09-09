@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 250 }
 
   # Method to return the 5 most recent comments for a given post
   def recent_comments(limit = 5)
