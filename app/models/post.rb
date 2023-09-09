@@ -4,7 +4,7 @@ class Post < ApplicationRecord
   has_many :likes
 
   validates :title, presence: true, length: { maximum: 250 }
-
+  validates :comments_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   # Method to return the 5 most recent comments for a given post
   def recent_comments(limit = 5)
     comments.order(created_at: :desc).limit(limit)
