@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
+  validates :name, presence: true
+
+
   def recent_posts(limit = 3)
     authored_posts.order(created_at: :desc).limit(limit)
   end
