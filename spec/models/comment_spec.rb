@@ -19,4 +19,17 @@ RSpec.describe Comment, type: :model do
     subject.user_id = nil
     expect(subject).to_not be_valid
   end
+
+  describe '#update_comments_counter' do
+    it 'updates the post\'s comments_counter when a comment is saved' do
+      user = User.create(name: 'John', post_count: 0)
+      post = Post.create(title: 'Test Post', comments_counter: 0, likes_counter: 0, author: user)
+
+      comment = Comment.new(text: 'Test comment', post:, user:)
+      expect do
+        comment.save
+        post.reload
+      end.to change(post, :comments_counter).by(1)
+    end
+  end
 end

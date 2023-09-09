@@ -29,4 +29,16 @@ RSpec.describe Post, type: :model do
     subject.author_id = -1
     expect(subject).to_not be_valid
   end
+
+  describe '#update_post_counter' do
+    it 'increments the author\'s posts_counter when a post is saved' do
+      user = User.create(name: 'John', post_count: 0)
+      post = Post.new(title: 'Test Post', comments_counter: 0, likes_counter: 0, author: user)
+
+      expect do
+        post.save
+        user.reload
+      end.to change(user, :post_count).by(1)
+    end
+  end
 end
