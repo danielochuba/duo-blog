@@ -1,31 +1,29 @@
+.user-card {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 90%;
+  gap: 10px;
+}
 
- 
- .user-card {
-    display: flex;
-   align-items: center;
-    height: 100px;
-    width: 90%;
-    gap: 10px;
- }
+.img-holder {
+  display: flex;
+  border: 1px solid black;
+  height: 90px;
+  width: 100px;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+}
 
- .img-holder {
-    display: flex;
-    border: 1px solid black;
-    height: 90px;
-    width: 100px;
-    align-items: center;
-    justify-content: center;
-    font-size: 70px;
- }
+.card-details {
+  border: 1px solid black;
+  height: 80px;
+  width: 400px;
+  padding-left: 10px;
+}
 
- .card-details {
-    border: 1px solid black;
-    height: 80px;
-    width: 400px;
-    padding-left: 10px;
- }
-
- .num-of-posts {
-    text-align: right;
-    padding-right: 5px;
- }
+.num-of-posts {
+  text-align: right;
+  padding-right: 5px;
+}
