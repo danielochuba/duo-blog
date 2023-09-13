@@ -42,4 +42,23 @@ RSpec.describe 'Users', type: :request do
     get user_url(user)
     expect(response.body).to include('Number of comments')
   end
+
+  it 'renders a successful response' do
+    user = User.create!(valid_attributes)
+    get users_url(user)
+    expect(response).to be_successful
+  end
+
+  it 'renders the correct template' do
+    user = User.create!(valid_attributes)
+    get users_url(user)
+    expect(response).to render_template('users/index')
+  end
+
+  it 'includes correct placeholder text in the response body' do
+    user = User.create!(valid_attributes)
+    get users_url(user)
+
+    expect(response.body).to include('Number of posts')
+  end
 end

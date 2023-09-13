@@ -37,4 +37,22 @@ RSpec.describe 'Posts', type: :request do
     get user_posts_path(post)
     expect(response.body).to include('Number of comments on each post')
   end
+
+  it 'renders a successful response' do
+    post = Post.create!(valid_attributes)
+    get user_post_path(user_id: post.author_id, id: post.id) # Pass both :user_id and :id
+    expect(response).to be_successful
+  end
+
+  it 'renders the correct template' do
+    post = Post.create!(valid_attributes)
+    get user_post_path(user_id: post.author_id, id: post.id)
+    expect(response).to render_template('posts/show')
+  end
+
+  it 'includes correct placeholder text in the response body' do
+    post = Post.create!(valid_attributes)
+    get user_post_path(user_id: post.author_id, id: post.id)
+    expect(response.body).to include('This page shows the content of a blog post')
+  end
 end
