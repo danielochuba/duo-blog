@@ -66,6 +66,7 @@
 - Users can create posts.
 - Users can comment on posts.
 - Users can like posts.
+- Routing
 
 
 ## 💻 Getting Started <a name="getting-started"></a>
