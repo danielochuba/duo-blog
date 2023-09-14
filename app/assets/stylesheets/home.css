@@ -1,9 +1,18 @@
+.users {
+  width: 50%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
 .user-card {
   display: flex;
   align-items: center;
   height: 100px;
-  width: 90%;
   gap: 10px;
+  text-decoration: none;
 }
 
 .img-holder {
@@ -24,6 +33,53 @@
 }
 
 .num-of-posts {
+  margin: 0;
   text-align: right;
   padding-right: 5px;
+}
+
+.post-title {
+  margin: 0;
+  padding-top: 3px;
+}
+
+.post-stats {
+  margin-top: 1px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-brief {
+  margin: 5px 0 0;
+}
+
+.post-content {
+  padding: 5px;
+  border: 1px solid;
+}
+
+.comments-card {
+  margin-top: -9px;
+  border: 1px solid;
+  width: 410px;
+}
+
+/* app/assets/stylesheets/application.css */
+.button {
+  display: block;
+  margin: auto;
+  width: 60px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Change the background color to your desired color */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 16px;
+
+}
+
+.button:hover {
+  background-color: #0056b3; /* Change the background color on hover */
 }
