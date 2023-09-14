@@ -1,7 +1,15 @@
-<h1>This page shows the content of a blog post</h1>
-<ul>It shows
-<li>Blog post</li>
-<li>Number of comments</li>
-<li>Number of likes</li>
-<li>All comments</li>
-</ul>
+<section>
+    <div class="post-content">
+        <% user = User.find(@user_post.author_id) %>
+        <p class="post-stats"><span>Post <%= @user_post.id %> by <%= user.name %> </span><span>Comments: <%= @user_post.comments_counter %>, Likes: <%= @user_post.likes_counter %></span></p>
+        <p><%= @user_post.text %></p>
+    </div>
+    <% if !@user_post.comments.empty? %>
+        <div class="card-details">
+            <% @user_post.comments.each do |comment| %>
+                <%user = User.find(comment.user_id)%>
+                <p class="post-brief"><%= user.name%>: <%= comment.text %></p>
+            <% end %>
+        </div>
+    <% end %>
+</section>
