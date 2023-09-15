@@ -1,4 +1,7 @@
-.users-list, .user-posts-list, .user-list, .user-post {
+.users-list,
+.user-posts-list,
+.user-list,
+.user-post {
   width: 70%;
   margin: auto;
 }
@@ -8,7 +11,8 @@ a {
   color: black;
 }
 
-.user-card, .user-card > a {
+.user-card,
+.user-card > a {
   width: 100%;
   display: flex;
   align-items: center;
@@ -16,7 +20,6 @@ a {
   gap: 10px;
   text-decoration: none;
 }
-
 
 .img-holder {
   display: flex;
@@ -28,7 +31,9 @@ a {
   font-size: 70px;
 }
 
-.card-details, .post-details, .comments-card {
+.card-details,
+.post-details,
+.comments-card {
   border: 1px solid black;
   height: 80px;
   width: 100%;
