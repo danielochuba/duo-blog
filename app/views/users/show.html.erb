@@ -1,4 +1,4 @@
-<ul>
+<ul class="user-list">
     <li class="user-card">
         <div class="img-holder"><%= image_tag @user.photo %></div>
         <div class="card-details">
@@ -14,7 +14,7 @@
     </li>
     <% @user_recent_posts.each do |post| %>
         <li class="user-card">
-            <div class="card-details">
+            <div class="post-details">
             <h6 class="post-title">Post <%= post.id %></h6>
             <p class="post-brief"><%= post.text %></p>
             <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
