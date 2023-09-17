@@ -11,6 +11,16 @@ class Post < ApplicationRecord
     comments.order(created_at: :desc).limit(limit)
   end
 
+  def liked_by?(user)
+    likes.exists?(user:)
+  end
+
+  after_initialize :set_defaults
+
+  def set_defaults
+    self.comments_counter ||= 0
+    self.likes_counter ||= 0
+  end
   # Method to update the likes counter for a post
 
   after_save :update_user_posts_counter

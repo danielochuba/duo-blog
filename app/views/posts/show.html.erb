@@ -13,3 +13,5 @@
         </div>
     <% end %>
 </section>
+
+<%= link_to "Add Comment", new_user_post_comment_path(user_id: @user.id, post_id: @post.id), class: "button" %>

@@ -9,12 +9,14 @@
     <% @user_posts.each do |post| %>
     <li class="user-card">
         <a href="<%= user_post_path(@user, post) %>">
-        <div class="card-details">
-        <h6 class="post-title">Post <%= post.id %></h6>
-        <p class="post-brief"><%= post.text %></p>
-        <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-        </div>
+            <div class="card-details">
+                <h6 class="post-title">Post <%= post.id %></h6>
+                <p class="post-brief"><%= post.text %></p>
+                <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+            </div>
+            
         </a>
+        
     </li>
       <% if !post.comments.empty? %>
         <div class="comments-card">
@@ -27,3 +29,4 @@
     <br/>
     <% end %>
 </ul>
+<%= link_to 'Add Post', new_user_post_path %>
