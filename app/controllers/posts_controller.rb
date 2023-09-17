@@ -39,7 +39,6 @@ class PostsController < ApplicationController
     @user_post = Post.find(params[:id])
   end
 
-
   private
 
   def post_params
