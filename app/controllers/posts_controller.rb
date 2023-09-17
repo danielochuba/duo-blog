@@ -5,6 +5,19 @@ class PostsController < ApplicationController
     @user_posts = Post.where(author_id: @user.id)
   end
 
+  def like
+    @post = Post.find(params[:id]) # Assuming you're using post_id in the route
+    @like = @post.likes.build(user: current_user)
+
+    if @like.save
+      flash[:success] = 'You liked this post.'
+    else
+      flash[:error] = 'Failed to like the post.'
+    end
+
+    redirect_to @post
+  end
+
   def new
     @user = User.find(params[:user_id])
     @user_posts = Post.where(author_id: @user.id)

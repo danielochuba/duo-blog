@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   post '/users/:user_id/posts', to: 'posts#create', as: 'create_user_post'
 
   # Custom routes for likes
-  post '/users/:user_id/posts/:post_id/likes', to: 'likes#create', as: 'post_likes'
+  get '/users/:user_id/posts/:post_id/likes/new', to: 'likes#new', as: 'new_post_like'
+  post '/users/:user_id/posts/:post_id', to: 'likes#create', as: 'post_likes'
   delete '/users/:user_id/posts/:post_id/likes/:id', to: 'likes#destroy', as: 'post_like'
 
   get '/users/:user_id/posts/:post_id/comments/new', to: 'comments#new', as: 'new_user_post_comment'
   post '/users/:user_id/posts/:post_id/comments', to: 'comments#create', as: 'create_post_comment'
+
 end
