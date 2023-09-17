@@ -1,10 +1,31 @@
-<h1>This page shows a user's profile</h1>
-<ul>It shows
-<li>User's Name</li>
-<li>Number of all user's posts</li>
-<li>All User's posts</li>
-<li>comments on user's posts</li>
-<li>Number of likes on each post</li>
-<li>Number of comments on each post</li>
-
+<ul class="user-posts-list">
+    <li class="user-card">
+        <div class="img-holder"><%= image_tag @user.photo %></div>
+        <div class="card-details">
+        <h4 class="user-name"><%= @user.name %></h4>
+        <p class="num-of-posts">Number of posts: <%= @user.post_count %></p>
+        </div>
+    </li>
+    <% @user_posts.each do |post| %>
+    <li class="user-card">
+        <a href="<%= user_post_path(@user, post) %>">
+            <div class="card-details">
+                <h6 class="post-title">Post <%= post.id %></h6>
+                <p class="post-brief"><%= post.text %></p>
+                <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+               <%= button_to "Like", post_likes_path(user_id: post.author_id, post_id: post.id), method: :post, remote: true, class: 'like-button' %>
+            </div>
+        </a>
+    </li>
+      <% if !post.comments.empty? %>
+        <div class="comments-card">
+            <% post.recent_comments.each do |comment| %>
+                <% user = User.find(comment.user_id) %>
+                <p class="post-brief"><strong><%= user.name%>:</strong> <%= comment.text %></p>
+            <% end %>
+        </div>
+      <% end %>
+    <br/>
+    <% end %>
 </ul>
+<%= link_to 'Add Post', new_user_post_path %>
