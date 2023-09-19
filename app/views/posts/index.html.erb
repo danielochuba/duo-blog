@@ -13,9 +13,10 @@
                 <h6 class="post-title">Post <%= post.id %></h6>
                 <p class="post-brief"><%= post.text %></p>
                 <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-               <%= button_to "Like", post_likes_path(user_id: post.author_id, post_id: post.id), method: :post, remote: true, class: 'like-button' %>
+              
             </div>
         </a>
+         <%= button_to "Like", post_likes_path(user_id: post.author_id, post_id: post.id), method: :post, remote: true, class: 'like-button' %>
     </li>
       <% if !post.comments.empty? %>
         <div class="comments-card">
