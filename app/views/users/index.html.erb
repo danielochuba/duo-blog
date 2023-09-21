@@ -2,15 +2,20 @@
 
     <ul class="users-list">
     <% @users.each do |user| %>
-        <a href="<%= user_path(user) %>">
+       
         <li class="user-card">
             <div class="img-holder"><%= image_tag user.photo %></div>
             <div class="card-details">
-            <h4 class="user-name"><%= user.name %></h4>
+            <h4 class="user-name">
+             <a href="<%= user_path(user) %>">
+                <%= user.name %>
+             </a>
+            </h4>
+             
             <p class="num-of-posts">Number of posts: <%= user.post_count %></p>
             </div>
         </li>
-        </a>
+       
         <br/>
     <% end %>
     </ul>

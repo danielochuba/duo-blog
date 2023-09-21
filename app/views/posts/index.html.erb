@@ -3,19 +3,22 @@
         <div class="img-holder"><%= image_tag @user.photo %></div>
         <div class="card-details">
         <h4 class="user-name"><%= @user.name %></h4>
-        <p class="num-of-posts">Number of posts: <%= @user.post_count %></p>
+        <p class="num-of-posts">Number of posts : <%= @user.post_count %></p>
         </div>
     </li>
     <% @user_posts.each do |post| %>
     <li class="user-card">
-        <a href="<%= user_post_path(@user, post) %>">
+       
             <div class="card-details">
-                <h6 class="post-title">Post <%= post.id %></h6>
+                <h6 class="post-title">
+                    <a href="<%= user_post_path(@user, post) %>">  
+                        <%= post.title %></h6>
+                    </a>
                 <p class="post-brief"><%= post.text %></p>
                 <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
               
             </div>
-        </a>
+        
          <%= button_to "Like", post_likes_path(user_id: post.author_id, post_id: post.id), method: :post, remote: true, class: 'like-button' %>
     </li>
       <% if !post.comments.empty? %>
@@ -29,4 +32,7 @@
     <br/>
     <% end %>
 </ul>
-<%= link_to 'Add Post', new_user_post_path %>
+<%= link_to 'Add Post', new_user_post_path, class: 'button' %> 
+<%= link_to user_posts_path(@user), class: 'button' do %>
+  Show all posts
+<% end %>
