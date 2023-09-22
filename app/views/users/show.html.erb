@@ -3,7 +3,7 @@
         <div class="img-holder"><%= image_tag @user.photo %></div>
         <div class="card-details">
         <h4 class="user-name"><%= @user.name %></h4>
-        <p class="num-of-posts">Number of posts: <%= @user.post_count %></p>
+        <p class="num-of-posts">Number of posts : <%= @user.post_count %></p>
         </div>
     </li>
     <br/>
@@ -15,7 +15,7 @@
     <% @user_recent_posts.each do |post| %>
         <li class="user-card">
             <div class="post-details">
-            <h6 class="post-title">Post <%= post.id %></h6>
+            <h6 class="post-title"><%= post.title %></h6>
             <p class="post-brief"><%= post.text %></p>
             <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
             </div>

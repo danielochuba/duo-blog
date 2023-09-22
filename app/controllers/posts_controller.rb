@@ -1,8 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
-    @user = User.find(params[:user_id])
-    @user_posts = Post.where(author_id: @user.id)
+    @user = User.includes(:authored_posts).find(params[:user_id])
+    @user_posts = @user.authored_posts
   end
 
   def like
