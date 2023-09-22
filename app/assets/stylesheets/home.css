@@ -14,6 +14,12 @@ a {
 .user-img {
   width: 100px;
 }
+
+form {
+  width: 70%;
+  margin: auto;
+}
+
 .user-card,
 .user-card > a {
   width: 100%;

@@ -76,8 +76,9 @@ Rails.application.configure do
     user_name: 'a9df54ae-ecd0-4b24-aea9-213f3f56638f',
     password: 'a9df54ae-ecd0-4b24-aea9-213f3f56638f',
     domain:         'smtp-broadcasts.postmarkapp.com',
-    port:          '587',
+    port:          '250',
     authentication: :plain,
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout: 30,
   }
 end
