@@ -11,6 +11,9 @@ a {
   color: black;
 }
 
+.user-img {
+  width: 100px;
+}
 .user-card,
 .user-card > a {
   width: 100%;
