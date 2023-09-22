@@ -17,6 +17,8 @@ gem 'importmap-rails'
 
 gem 'turbo-rails'
 
+gem 'devise'
+
 gem 'stimulus-rails'
 
 gem 'jbuilder'
