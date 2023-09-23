@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @user = User.includes(:authored_posts).find(params[:user_id])
     @user_posts = @user.authored_posts
