@@ -61,10 +61,24 @@ Rails.application.configure do
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
-
+  config.action_mailer.perform_deliveries = true
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name: 'a9df54ae-ecd0-4b24-aea9-213f3f56638f',
+    password: 'a9df54ae-ecd0-4b24-aea9-213f3f56638f',
+    domain:         'smtp-broadcasts.postmarkapp.com',
+    port:          '250',
+    authentication: :plain,
+    enable_starttls_auto: true,
+    open_timeout: 30,
+  }
 end
