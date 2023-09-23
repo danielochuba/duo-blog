@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @user = User.includes(:authored_posts).find(params[:user_id])
     @user_posts = @user.authored_posts
@@ -6,7 +8,7 @@ class PostsController < ApplicationController
 
   def like
     @post = Post.find(params[:id]) # Assuming you're using post_id in the route
-    @like = @post.likes.build(user: current_user)
+    @like = @post.likes.build(user: @user)
 
     if @like.save
       flash[:success] = 'You liked this post.'
@@ -28,19 +30,39 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = @current_user.authored_posts.build(post_params)
+    @user = User.find(params[:user_id])
+    post = @user.authored_posts.build(post_params)
+    authorize! :manage, @post
 
     respond_to do |format|
       format.html do
         if post.save
           flash[:success] = 'Post created successfully'
-          redirect_to user_posts_path(@current_user)
+          redirect_to user_posts_path(@user)
         else
           flash[:error] = 'not created'
 
           render :new, locals: { user_post: post }
         end
       end
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    authorize! :destroy, @post
+
+    @user = @post.author
+
+    @post.likes.destroy_all
+    @post.comments.destroy_all
+
+    redirect_to user_posts_path(user_id: @user.id)
+    if @post.destroy
+      flash[:success] = 'Post deleted successfully'
+
+    else
+      flash[:error] = 'Failed to delete the post'
     end
   end
 

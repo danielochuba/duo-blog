@@ -11,6 +11,8 @@ gem 'pg', '~> 1.1'
 
 gem 'puma', '~> 5.0'
 
+gem 'cancancan'
+
 gem 'factory_bot_rails', '~> 6.2'
 
 gem 'importmap-rails'

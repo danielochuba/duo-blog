@@ -3,15 +3,23 @@
         <% user = User.find(@user_post.author_id) %>
         <p class="post-stats"><span><%= @user_post.title %> by <strong><%= user.name %></strong> </span><span>Comments: <%= @user_post.comments_counter %>, Likes: <%= @user_post.likes_counter %></span></p>
         <p><%= @user_post.text %></p>
+        <%= link_to "Like", post_likes_path(user_id: @user_post.author_id, post_id: @user_post.id), method: :post, class: 'btn btn-outline-warning' %>
+        <% if can? :destroy, @user_post %>
+             <%= link_to 'Delete', destroy_user_post_path(@user_post), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
     </div>
     <% if !@user_post.comments.empty? %>
         <div class="comments-card">
             <% @user_post.comments.each do |comment| %>
-                <%user = User.find(comment.user_id)%>
+                <% user = current_user %>
                 <p class="post-brief"><strong><%= user.name%>:</strong> <%= comment.text %></p>
+                <% if can? :destroy, comment %>
+                    <%= link_to 'Delete', destroy_post_comment_path(user_id: @user_post.author_id, post_id: @user_post.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%end%>
             <% end %>
         </div>
     <% end %>
 </section>
-
-<%= link_to "Add Comment", new_user_post_comment_path(user_id: @user.id, post_id: @post.id), class: "button" %>
+<div class="w-25 m-auto">
+<%= link_to "Add Comment", new_user_post_comment_path(user_id: @user.id, post_id: @post.id), class: "btn btn-primary w-75 m-auto" %>
+</div>

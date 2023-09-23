@@ -46,9 +46,29 @@
     </div>
   </div>
 </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
+<% if flash[:success] %>
+  <div class="alert alert-success w-50 m-auto">
+    <%= flash[:success] %>
+  </div>
+<% elsif flash[:error] %>
+  <div class="alert alert-danger w-50 m-auto">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+<% if notice %>
+  <p class="notice w-50">
+     <div class="alert alert-warning w-50 m-auto">
+    <%= notice %>
+  </div>
+  </p>
+<% end %>
+<% if alert %>
+  <p class="alert w-50">
+    <div class="alert alert-danger w-50 m-auto">
+      <%= alert %>
+    </div>
+  </p>
+<% end %>
   <%= yield %>
   </body>
 </html>

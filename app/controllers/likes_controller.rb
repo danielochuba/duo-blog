@@ -1,24 +1,23 @@
 class LikesController < ApplicationController
   def create
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-    @like = Like.new(user: current_user, post: @post)
+    @like = Like.new(user: @user, post: @post)
 
-    puts @like.inspect
-
-    if @like.save
-      flash[:success] = 'Like created successfully'
-    else
-      flash[:error] = 'Like not created'
-      puts @like.errors.full_messages.inspect, 'cant save like'
+    respond_to do |format|
+      if @like.save
+        flash[:success] = 'Like created successfully'
+      else
+        flash[:error] = 'Like not created'
+      end
+      format.html { redirect_to user_post_path(user_id: @post.author_id, id: @post.id) }
     end
-
-    redirect_to user_post_path(user_id: @post.author_id, id: @post.id)
   end
 
   def destroy
     post = Post.find(params[:post_id])
     like = Like.find(params[:id])
-    like.destroy if like.user == current_user && like.post == post
+    like.destroy if like.user == @user && like.post == post
     @like = Like.find(params[:id])
     @like.destroy
     flash[:success] = 'Like deleted successfully'

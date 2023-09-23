@@ -7,8 +7,12 @@
     <%= f.text_field :name, class: "form-control", class: "form-control", placeholder: "Name"  %>
   </div>
 
-  <div class="field ">
+  <div class="field mb-3">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email"  %>
+  </div>
+
+  <div class="field ">
+    <%= f.text_field :role, placeholder: "Choose role - 'user', 'author', 'admin'" , class: "form-control"%>
   </div>
 
   <div class="field mb-3">

@@ -6,9 +6,10 @@ class CommentsController < ApplicationController
   end
 
   def create
+    @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
-    @comment.user = current_user
+    @comment.user = @user
 
     if @comment.save
       flash[:success] = 'Comment created successfully'
@@ -24,7 +25,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:success] = 'Comment deleted successfully'
-    redirect_to @comment.post
+    redirect_to
   end
 
   private
