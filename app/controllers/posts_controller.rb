@@ -57,12 +57,11 @@ class PostsController < ApplicationController
     @post.likes.destroy_all
     @post.comments.destroy_all
 
+    redirect_to user_posts_path(user_id: @user.id)
     if @post.destroy
-      redirect_to user_posts_path(user_id: @user.id)
       flash[:success] = 'Post deleted successfully'
 
     else
-      redirect_to user_posts_path(user_id: @user.id)
       flash[:error] = 'Failed to delete the post'
     end
   end

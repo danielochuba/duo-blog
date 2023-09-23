@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  enum role: [:user, :admin, :author]
+  enum role: %i[user admin author]
 
 
 
@@ -15,15 +15,15 @@ class User < ApplicationRecord
   validates :post_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def admin?
-    self.role == '1' # self.role == 'admin'
+    role == '1' # self.role == 'admin'
   end
 
   def author?
-    self.role == '2' # self.role == 'author'
+    role == '2' # self.role == 'author'
   end
 
   def user?
-    self.role == '0' # self.role == 'user'
+    role == '0' # self.role == 'user'
   end
 
   def recent_posts(limit = 3)

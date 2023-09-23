@@ -2,16 +2,15 @@ class LikesController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = Post.find(params[:post_id])
-    @like = Like.new(user: @user , post: @post)
+    @like = Like.new(user: @user, post: @post)
 
     respond_to do |format|
       if @like.save
         flash[:success] = 'Like created successfully'
-        format.html { redirect_to user_post_path(user_id: @post.author_id, id: @post.id) }
       else
         flash[:error] = 'Like not created'
-        format.html { redirect_to user_post_path(user_id: @post.author_id, id: @post.id) }
       end
+      format.html { redirect_to user_post_path(user_id: @post.author_id, id: @post.id) }
     end
   end
 
