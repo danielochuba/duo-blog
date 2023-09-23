@@ -25,7 +25,11 @@
               
             </div>
         
-         <%= button_to "Like", post_likes_path(user_id: post.author_id, post_id: post.id), method: :post, remote: true, class: 'like-button' %>
+        <%= button_to "Like", post_likes_path(user_id: post.author_id, post_id: post.id), method: :post, class: 'like-button' %>
+        <% if can? :destroy, post %>
+            <%= link_to 'Delete', destroy_user_post_path(user_id: post.author_id, id: post.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+
     </li>
       <% if !post.comments.empty? %>
         <div class="comments-card">
@@ -38,7 +42,9 @@
     <br/>
     <% end %>
 </ul>
-<%= link_to 'Add Post', new_user_post_path, class: 'button' %> 
-<%= link_to user_posts_path(@user), class: 'button' do %>
+<div class="d-grid gap-2 w-25 m-auto">
+<%= link_to 'Add Post', new_user_post_path, class: 'btn btn-primary' %> 
+<%= link_to user_posts_path(@user), class: 'btn btn-primary' do %>
   Show all posts
 <% end %>
+</div>
