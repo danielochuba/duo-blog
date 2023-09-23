@@ -11,8 +11,11 @@
     <% if !@user_post.comments.empty? %>
         <div class="comments-card">
             <% @user_post.comments.each do |comment| %>
-                <%user = User.find(comment.user_id)%>
+                <% user = current_user %>
                 <p class="post-brief"><strong><%= user.name%>:</strong> <%= comment.text %></p>
+                <% if can? :destroy, comment %>
+                    <%= link_to 'Delete', destroy_post_comment_path(user_id: @user_post.author_id, post_id: @user_post.id, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%end%>
             <% end %>
         </div>
     <% end %>

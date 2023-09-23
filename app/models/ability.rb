@@ -5,16 +5,17 @@ class Ability
     user ||= User.new # Guest user
 
     if user.admin?
-      can :manage, :all # Admins can manage all posts
+      can :manage, :all # Admins can manage all posts and comments
     else
       can :manage, Post, author_id: user.id # Users can manage their own posts
       can :manage, Comment, user_id: user.id # Users can manage their own comments
     end
 
-    return unless user.user?
+     return unless user.user?
 
-    can :read, Post
-    can :read, Comment
+     can :read, Post
+     can :read, Comment
+     can :destroy, Comment, user_id: user.id
   end
 end
 

@@ -1,8 +1,8 @@
-<%= form_with(model: @comment, url: create_post_comment_path(user_id: @user, post_id: @post), method: :post) do |f| %>
+<%= form_with(model: @comment, url: create_post_comment_path(user_id: current_user, post_id: @post), method: :post) do |f| %>
   <%= f.label :text %>
   <%= f.text_area :text %>
 
-  <%= f.hidden_field :user_id, value: @user.id %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :post_id, value: @post.id %>
 
   <%= f.submit "Submit Comment" %>
