@@ -7,8 +7,24 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
+  enum role: [:user, :admin, :author]
+
+
+
   validates :name, presence: true
   validates :post_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  def admin?
+    self.role == '1' # self.role == 'admin'
+  end
+
+  def author?
+    self.role == '2' # self.role == 'author'
+  end
+
+  def user?
+    self.role == '0' # self.role == 'user'
+  end
 
   def recent_posts(limit = 3)
     authored_posts.order(created_at: :desc).limit(limit)
