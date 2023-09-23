@@ -1,16 +1,18 @@
 # frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # guest user (not logged in)
-   case user.is?
-   when 'author'
-     can :manage, Post
-   else
-     can :read, Post
-   end
+    user ||= User.new # Guest user
+
+    if user.admin?
+      can :manage, :all # Admins can manage all posts
+    else
+      can :manage, Post, author_id: user.id # Users can manage their own posts
+    end
+  end
+end
+
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
@@ -35,5 +37,3 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
-  end
-end
