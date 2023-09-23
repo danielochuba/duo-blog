@@ -9,8 +9,6 @@ class User < ApplicationRecord
 
   enum role: %i[user admin author]
 
-
-
   validates :name, presence: true
   validates :post_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
