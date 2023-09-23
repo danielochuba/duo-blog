@@ -19,4 +19,20 @@ Rails.application.routes.draw do
   post '/users/:user_id/posts/:post_id/comments', to: 'comments#create', as: 'create_post_comment'
   delete '/users/:user_id/posts/:post_id/comments/:id', to: 'comments#destroy', as: 'destroy_post_comment'
 
+
+    namespace :api do
+      namespace :v1 do
+        resources :users do
+          get 'posts', to: 'posts#index'
+          resources :posts do
+            get 'comments', to: 'comments#index'
+            resources :comments, only: [:create]
+          end
+        end
+      end
+    end
+
+
+
+
 end

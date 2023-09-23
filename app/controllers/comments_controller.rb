@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def index
     post = Post.find(params[:post_id])
     @comments = post.comments
@@ -22,7 +21,7 @@ class CommentsController < ApplicationController
       render json: @comment, status: :created
       flash[:success] = 'Comment created successfully'
     else
-      render json: { errors: @comment.errors.full_messages}, status: :unprocessable_entity
+      render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
       flash[:error] = 'Comment not created'
     end
 

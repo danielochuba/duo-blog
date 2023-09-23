@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   def index
     @user = User.includes(:authored_posts).find(params[:user_id])
     @user_posts = @user.authored_posts
+
+    render json: @user_posts
   end
 
   def like
@@ -71,6 +73,8 @@ class PostsController < ApplicationController
     @user = User.find(@post.author_id)
     @user_posts = Post.where(author_id: @user.id)
     @user_post = Post.find(params[:id])
+
+    render json: @user_post
   end
 
   private
