@@ -36,7 +36,11 @@
             <% post.recent_comments.each do |comment| %>
                 <% user = User.find(comment.user_id) %>
                 <p class="post-brief"><strong><%= user.name%>:</strong> <%= comment.text %></p>
+                <% if can? :destroy, comment %>
+                    <%= link_to "delete", destroy_post_comment_path(user_id: @user, post_id: post, id: comment.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
             <% end %>
+           
         </div>
       <% end %>
     <br/>

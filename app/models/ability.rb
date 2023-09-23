@@ -9,6 +9,12 @@ class Ability
       can :manage, :all # Admins can manage all posts
     else
       can :manage, Post, author_id: user.id # Users can manage their own posts
+      can :manage, Comment, user_id: user.id # Users can manage their own comments
+    end
+
+    if user.user?
+      can :read, Post
+      can :read, Comment
     end
   end
 end
