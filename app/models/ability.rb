@@ -11,11 +11,11 @@ class Ability
       can :manage, Comment, user_id: user.id # Users can manage their own comments
     end
 
-     return unless user.user?
+    return unless user.user?
 
-     can :read, Post
-     can :read, Comment
-     can :destroy, Comment, user_id: user.id
+    can :read, Post
+    can :read, Comment
+    can :destroy, Comment, user_id: user.id
   end
 end
 

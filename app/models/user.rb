@@ -11,15 +11,15 @@ class User < ApplicationRecord
   validates :post_count, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   def admin?
-    self.role == 'admin' # self.role == 'admin'
+    role == 'admin' # self.role == 'admin'
   end
 
   def author?
-    self.role == 'author' # self.role == 'author'
+    role == 'author' # self.role == 'author'
   end
 
   def user?
-    self.role == 'user' # self.role == 'user'
+    role == 'user' # self.role == 'user'
   end
 
   def recent_posts(limit = 3)
