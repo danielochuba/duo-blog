@@ -21,6 +21,8 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
+  config.swagger_root = "#{Rails.root}/swagger"
+
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
 end
