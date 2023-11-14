@@ -1,0 +1,35 @@
+<ul class="user-list">
+    <li class="user-card">
+        <div class="img-holder">
+            <% if @user.photo %>
+                <%= image_tag @user.photo, class: "user-img" %>
+                <% else %>
+                <%= image_tag "default.png", class: "user-img"%>
+            <% end %>
+        </div>
+        <div class="card-details">
+        <h4 class="user-name"><%= @user.name %></h4>
+        <p class="num-of-posts">Number of posts : <%= @user.post_count %></p>
+        </div>
+    </li>
+    <br/>
+    <li class="user-card">
+        Bio
+        <p class="bio"><%= @user.bio %></p>
+        </div>
+    </li>
+    <% @user_recent_posts.each do |post| %>
+        <li class="user-card">
+            <div class="post-details">
+            <h6 class="post-title"><%= post.title %></h6>
+            <p class="post-brief"><%= post.text %></p>
+            <p class="num-of-posts">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+            </div>
+        </li>
+    <br/>
+    <% end %>
+</ul>
+<%= link_to user_posts_path(@user), class: 'button' do %>
+  Show All
+<% end %>
+

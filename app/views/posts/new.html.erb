@@ -1,0 +1,14 @@
+<%= form_with model: Post.new, url: user_posts_path(current_user), method: :post, local: true do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :text %>
+  <%= f.text_area :text %>
+
+  <%= f.hidden_field :author_id, value: current_user.id %>
+
+  <%= f.submit "Create Post" %>
+<% end %>
+
+<%= link_to "Back", user_posts_path %>
+<%= flash[:error] %><%= flash[:success] %>

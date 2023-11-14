@@ -1,0 +1,29 @@
+<div class="users">
+
+    <ul class="users-list">
+    <% @users.each do |user| %>
+       
+        <li class="user-card">
+            <div class="img-holder">
+                <% if user.photo %>
+                <%= image_tag user.photo, class: "user-img" %>
+                <% else %>
+                <%= image_tag "default.png", class: "user-img"%>
+                <% end %>
+            </div>
+            <div class="card-details">
+            <h4 class="user-name">
+             <a href="<%= user_path(user) %>">
+                <%= user.name %>
+             </a>
+            </h4>
+             
+            <p class="num-of-posts">Number of posts: <%= user.post_count %></p>
+            </div>
+        </li>
+       
+        <br/>
+    <% end %>
+    </ul>
+    
+</div>
